@@ -3,14 +3,30 @@ name: "Publish org-roam to GitHub Pages"
 runs:
   using: "composite"
   steps:
-    # 呼び出されたworkflowのリポジトリをチェックアウトし、ファイル一覧を出力する
     - name: "Checkout"
       uses: actions/checkout@v4
       with:
         repository: ${{ github.repository }}
-        path: "repo"
-    - name: "List files"
-      run: |
-        cd repo
-        find . -type f
-      shell: bash
+        path: "orgs"
+
+    - name: Checkout org-roam-ui
+      uses: actions/checkout@v4
+      with:
+        repository: ikoamu/org-roam-ui
+        ref: feature/add-export-functionality
+        path: ui
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: "20.x"
+
+    - name: Install dependencies
+      run: npm ci
+      working-directory: .
+
+    - name: Generate graphdata.json
+      run: npm run generate --script_params=./orgs/org-roam.db
+
+    - name: print graphdata.json
+      run: cat graphdata.json
