@@ -1,6 +1,7 @@
 name: "Publish org-roam to GitHub Pages"
 
 runs:
+  using: "composite"
   steps:
     - name: "Test"
       run: echo "Hello World!"
