@@ -4,7 +4,10 @@ runs:
   using: "composite"
   steps:
     - name: Checkout this repo
-      uses: ./
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ github.action_repository }}
+        path: "action"
 
     - name: "Checkout org file repo"
       uses: actions/checkout@v4
