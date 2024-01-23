@@ -1,0 +1,8 @@
+name: "Publish org-roam to GitHub Pages"
+
+runs:
+  using: "node20"
+  steps:
+    - name: "Test"
+      run: echo "Hello World!"
+      shell: bash
