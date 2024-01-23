@@ -28,3 +28,4 @@ runs:
       id: get_path
       run: |
         echo "::set-output name=path::$(dirname $GITHUB_WORKFLOW)"
+      shell: bash
