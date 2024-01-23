@@ -23,10 +23,12 @@ runs:
 
     - name: Install dependencies
       run: npm ci
-      working-directory: .
+      shell: bash
 
     - name: Generate graphdata.json
       run: npm run generate --script_params=./orgs/org-roam.db
+      shell: bash
 
     - name: print graphdata.json
       run: cat graphdata.json
+      shell: bash
