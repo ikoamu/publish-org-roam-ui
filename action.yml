@@ -22,3 +22,9 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version: "20.x"
+
+    # 呼び出し側たworkflowsのディレクトリのパスを取得する
+    - name: Get the path of the calling workflow
+      id: get_path
+      run: |
+        echo "::set-output name=path::$(dirname $GITHUB_WORKFLOW)"
