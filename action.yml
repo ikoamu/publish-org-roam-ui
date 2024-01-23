@@ -3,29 +3,13 @@ name: "Publish org-roam to GitHub Pages"
 runs:
   using: "composite"
   steps:
-    - name: "Test"
-      run: ls -l
-      shell: bash
-
-    # - name: Checkout org-roam-ui
-    #    uses: actions/checkout@v4
-    #    with:
-    #      repository: ikoamu/org-roam-ui
-    #      ref: feature/add-export-functionality
-    #      path: ui
-
-    # - name: "Test"
-    #   run: ls -l
-    #   shell: bash
-
-    - name: Setup Node
-      uses: actions/setup-node@v3
+    # 呼び出されたworkflowのリポジトリをチェックアウトし、ファイル一覧を出力する
+    - name: "Checkout"
+      uses: actions/checkout@v4
       with:
-        node-version: "20.x"
-
-    # 呼び出し側たworkflowsのディレクトリのパスを取得する
-    - name: Get the path of the calling workflow
-      id: get_path
+        repository: ${{ github.repository }}
+        path: "repo"
+    - name: "List files"
       run: |
-        echo "::set-output name=path::$(dirname $GITHUB_WORKFLOW)"
-      shell: bash
+        cd repo
+        find . -type f
