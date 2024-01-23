@@ -3,7 +3,10 @@ name: "Publish org-roam to GitHub Pages"
 runs:
   using: "composite"
   steps:
-    - name: "Checkout"
+    - name: "Checkout Action"
+      uses: actions/checkout@v4
+
+    - name: "Checkout org file repo"
       uses: actions/checkout@v4
       with:
         repository: ${{ github.repository }}
