@@ -13,3 +13,4 @@ runs:
       run: |
         cd repo
         find . -type f
+      shell: bash
