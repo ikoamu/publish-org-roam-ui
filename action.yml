@@ -3,8 +3,8 @@ name: "Publish org-roam to GitHub Pages"
 runs:
   using: "composite"
   steps:
-    - name: "Checkout Action"
-      uses: actions/checkout@v4
+    - name: Checkout this repo
+      uses: ./
 
     - name: "Checkout org file repo"
       uses: actions/checkout@v4
