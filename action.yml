@@ -7,19 +7,18 @@ runs:
       run: ls -l
       shell: bash
 
-    - name: Checkout org-roam-ui
-       uses: actions/checkout@v4
-       with:
-         repository: ikoamu/org-roam-ui
-         ref: feature/add-export-functionality
-         path: ui
+    # - name: Checkout org-roam-ui
+    #    uses: actions/checkout@v4
+    #    with:
+    #      repository: ikoamu/org-roam-ui
+    #      ref: feature/add-export-functionality
+    #      path: ui
 
-    - name: "Test"
-      run: ls -l
-      shell: bash
+    # - name: "Test"
+    #   run: ls -l
+    #   shell: bash
 
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
         node-version: "20.x"
-
