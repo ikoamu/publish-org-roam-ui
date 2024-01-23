@@ -21,14 +21,18 @@ runs:
       with:
         node-version: "20.x"
 
-    - name: Install dependencies
-      run: npm install
+    - name: print files
+      run: ls -la
       shell: bash
 
-    - name: Generate graphdata.json
-      run: npm run generate --script_params=./orgs/org-roam.db
-      shell: bash
+    # - name: Install dependencies
+    #   run: npm install
+    #   shell: bash
 
-    - name: print graphdata.json
-      run: cat graphdata.json
-      shell: bash
+    # - name: Generate graphdata.json
+    #   run: npm run generate --script_params=./orgs/org-roam.db
+    #   shell: bash
+
+    # - name: print graphdata.json
+    #   run: cat graphdata.json
+    #   shell: bash
