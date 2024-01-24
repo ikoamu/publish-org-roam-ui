@@ -55,6 +55,7 @@ runs:
     - name: Add nojekyll
       working-directory: ui
       run: touch ./standalone/out/.nojekyll
+      shell: bash
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
