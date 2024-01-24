@@ -1,5 +1,11 @@
 name: "Publish org-roam to GitHub Pages"
 
+inputs:
+  deploy-to-pages:
+    description: "Deploy to GitHub Pages"
+    required: false
+    default: false
+
 runs:
   using: "composite"
   steps:
@@ -8,7 +14,7 @@ runs:
       with:
         repository: ikoamu/org-roam-ui-hosting
         path: action
-    - name: "Checkout org file repo"
+    - name: Checkout org file repo
       uses: actions/checkout@v4
       with:
         repository: ${{ github.repository }}
@@ -56,10 +62,13 @@ runs:
       working-directory: ui
       run: touch ./standalone/out/.nojekyll
       shell: bash
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
         path: "./ui/standalone/out"
+
     - name: Deploy to GitHub Pages
+      if: ${{ inputs.deploy-to-pages == 'true' }}
       id: deployment
       uses: actions/deploy-pages@v2
