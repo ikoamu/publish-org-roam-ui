@@ -59,7 +59,7 @@ runs:
 
     - name: Create Notes
       working-directory: action
-      run: ./create_notes.sh
+      run: ./create_notes.sh ../orgs
       shell: bash
 
     - name: print files
