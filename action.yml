@@ -6,9 +6,8 @@ runs:
     - name: Checkout this repo
       uses: actions/checkout@v4
       with:
-        repository: ikoamu/org-roam-hosting
+        repository: ikoamu/org-roam-ui-hosting
         path: action
-        ref: main
 
     - name: "Checkout org file repo"
       uses: actions/checkout@v4
