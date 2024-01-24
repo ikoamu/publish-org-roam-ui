@@ -41,14 +41,6 @@ runs:
       shell: bash
     - name: Generate graphdata.json
       working-directory: action
-      run: cat package.json
-      shell: bash
-    - name: echo
-      working-directory: action
-      run: echo ${{ inputs.org-roam-db-filename }}
-      shell: bash
-    - name: Generate graphdata.json
-      working-directory: action
       run: npm run generate --script_params='../org/${{ inputs.org-roam-db-filename }}''
       shell: bash
     - name: Create Notes
