@@ -28,21 +28,26 @@ runs:
         node-version: "20.x"
 
     - name: Install graphdata generator dependencies
-      working-directory: action
+      working-directory: ./action
       run: npm install
       shell: bash
 
     - name: Generate graphdata.json
-      working-directory: action
+      working-directory: ./action
+      run: cat package.json
+      shell: bash
+
+    - name: Generate graphdata.json
+      working-directory: ./action
       run: npm run generate --script_params=../orgs/org-roam.db
       shell: bash
 
     - name: Create Notes
-      working-directory: action
+      working-directory: ./action
       run: ./create_notes.sh
       shell: bash
 
     - name: print files
       run: ls -la
-      working-directory: action
+      working-directory: ./action
       shell: bash
