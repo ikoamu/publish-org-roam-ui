@@ -27,11 +27,27 @@ on:
     branches:
       - main
 jobs:
-  generate:
+  main:
     runs-on: ubuntu-latest
     steps:
       - name: Generate org-roam-ui page
         uses: ikoamu/org-roam-ui-hosting@main
         with:
           org-roam-db-filename: <org-roam-filename>.db
+```
+
+<img width="669" alt="generated artifact" src="https://github.com/ikoamu/publish-org-roam-ui/assets/38206334/fdc9f133-c97c-4d3b-b328-3a1d86560e83">
+
+Deploy to GitHub Pages by setting `deploy-to-pages` to true.
+
+```yml
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate org-roam-ui page
+        uses: ikoamu/org-roam-ui-hosting@main
+        with:
+          org-roam-db-filename: <org-roam-filename>.db
+          deploy-to-pages: true
 ```
