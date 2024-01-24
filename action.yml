@@ -60,3 +60,6 @@ runs:
       uses: actions/upload-pages-artifact@v2
       with:
         path: "./ui/standalone/out"
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
