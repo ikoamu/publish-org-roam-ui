@@ -1,7 +1,7 @@
 name: "Publish org-roam to GitHub Pages"
 
 inputs:
-  org-roam-db-file:
+  org-roam-db-filename:
     description: "org-roam db filename"
     required: true
   deploy-to-pages:
