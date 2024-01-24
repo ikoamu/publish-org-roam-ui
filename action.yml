@@ -6,7 +6,7 @@ runs:
     - name: Checkout this repo
       uses: actions/checkout@v4
       with:
-        repository: ikoamu/org-roam-hosing
+        repository: ikoamu/org-roam-hosting
         path: action
 
     - name: "Checkout org file repo"
