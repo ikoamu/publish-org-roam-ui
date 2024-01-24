@@ -1,4 +1,9 @@
-name: "Publish org-roam to GitHub Pages"
+name: "Publish org-roam-ui"
+description: "Generate org-roam-ui static page and deploy to GitHub Pages"
+
+branding:
+  icon: 'zap'
+  color: 'gray-dark'
 
 inputs:
   org-roam-db-filename:
