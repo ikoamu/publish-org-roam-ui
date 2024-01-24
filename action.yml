@@ -8,13 +8,11 @@ runs:
       with:
         repository: ikoamu/org-roam-ui-hosting
         path: action
-
     - name: "Checkout org file repo"
       uses: actions/checkout@v4
       with:
         repository: ${{ github.repository }}
         path: orgs
-
     - name: Checkout org-roam-ui
       uses: actions/checkout@v4
       with:
@@ -27,42 +25,37 @@ runs:
       with:
         node-version: "20.x"
 
+    # create graphdata.json and notes
     - name: Install graphdata generator dependencies
       working-directory: action
       run: npm install
       shell: bash
-
-    - name: Generate graphdata.json
-      working-directory: ./action
-      run: ls -la
-      shell: bash
-
     - name: Generate graphdata.json
       working-directory: action
       run: cat package.json
       shell: bash
-
     - name: Generate graphdata.json
       working-directory: action
       run: npm run generate --script_params=../orgs/org-roam.db
       shell: bash
-
-    - name: print files
-      run: ls -la
-      working-directory: action
-      shell: bash
-
-    - name: print files
-      run: cat graphdata.json
-      working-directory: action
-      shell: bash
-
     - name: Create Notes
       working-directory: action
       run: ./create_notes.sh ../orgs
       shell: bash
 
-    - name: print files
-      run: ls -la
-      working-directory: action
+    # build org-roam-ui
+    - name: Install org-roam-ui dependencies
+      working-directory: ui
+      run: yarn install
       shell: bash
+    - name: Build org-roam-ui
+      working-directory: ui/standalone
+      run: ./build-standalone-server.sh ../../action/
+      shell: bash
+    - name: Add nojekyll
+      working-directory: ui
+      run: touch ./standalone/out/.nojekyll
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: "./ui/standalone/out"
