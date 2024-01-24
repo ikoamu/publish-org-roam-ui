@@ -6,14 +6,14 @@ runs:
     - name: Checkout this repo
       uses: actions/checkout@v4
       with:
-        repository: ${{ github.action_repository }}
-        path: "action"
+        repository: ikoamu/org-roam-hosing
+        path: action
 
     - name: "Checkout org file repo"
       uses: actions/checkout@v4
       with:
         repository: ${{ github.repository }}
-        path: "orgs"
+        path: orgs
 
     - name: Checkout org-roam-ui
       uses: actions/checkout@v4
@@ -28,7 +28,7 @@ runs:
         node-version: "20.x"
 
     - name: Install graphdata generator dependencies
-      working-directory: ./action
+      working-directory: action
       run: npm install
       shell: bash
 
@@ -38,21 +38,21 @@ runs:
       shell: bash
 
     - name: Generate graphdata.json
-      working-directory: ./action
+      working-directory: action
       run: cat package.json
       shell: bash
 
     - name: Generate graphdata.json
-      working-directory: ./action
+      working-directory: action
       run: npm run generate --script_params=../orgs/org-roam.db
       shell: bash
 
     - name: Create Notes
-      working-directory: ./action
+      working-directory: action
       run: ./create_notes.sh
       shell: bash
 
     - name: print files
       run: ls -la
-      working-directory: ./action
+      working-directory: action
       shell: bash
