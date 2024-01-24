@@ -30,9 +30,9 @@ runs:
         path: ui
 
     - name: Setup Node
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: "20.x"
+        node-version: "20"
 
     # create graphdata.json and notes
     - name: Install graphdata generator dependencies
