@@ -47,6 +47,16 @@ runs:
       run: npm run generate --script_params=../orgs/org-roam.db
       shell: bash
 
+    - name: print files
+      run: ls -la
+      working-directory: action
+      shell: bash
+
+    - name: print files
+      run: cat graphdata.json
+      working-directory: action
+      shell: bash
+
     - name: Create Notes
       working-directory: action
       run: ./create_notes.sh
