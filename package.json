@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "generate": "node ./generateJson.js $npm_config_script_params"
+    "generate": "node ./generate_json.js $npm_config_script_params"
   },
   "keywords": [],
   "author": "",
