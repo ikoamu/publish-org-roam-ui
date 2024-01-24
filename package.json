@@ -1,5 +1,6 @@
 {
-  "name": "org-roam-ui-hosting",
+  "name": "publish-org-roam-ui-script",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "scripts": {
