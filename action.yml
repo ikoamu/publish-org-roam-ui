@@ -34,6 +34,11 @@ runs:
 
     - name: Generate graphdata.json
       working-directory: ./action
+      run: ls -la
+      shell: bash
+
+    - name: Generate graphdata.json
+      working-directory: ./action
       run: cat package.json
       shell: bash
 
