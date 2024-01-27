@@ -6,7 +6,7 @@ mkdir -p notes
 
 # cat graphdata.json
 
-# ls -ls "${orgPath}"
+ls -ls "${orgPath}"
 
 cat graphdata.json |
 jq -c '.data.nodes[]' |
