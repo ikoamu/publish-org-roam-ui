@@ -4,6 +4,10 @@ orgPath=$1
 
 mkdir -p notes
 
+cat graphdata.json
+
+ls -ls "${orgPath}"
+
 cat graphdata.json |
 jq -c '.data.nodes[]' |
 while read -r nodes; do
