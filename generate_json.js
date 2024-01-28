@@ -46,7 +46,7 @@ function getFilename(path) {
 
 const queryNodes = `
 SELECT
-  tags.tag as tags,
+  GROUP_CONCAT(tags.tag) AS tags, 
   nodes.properties,
   nodes.olp,
   nodes.pos,
@@ -75,9 +75,11 @@ WHERE
 
 const queryTags = `
 SELECT
-  *
+  tags.tag
 FROM
   tags
+GROUP BY
+  tags.tag
 `;
 
 const graphdata = {
@@ -87,14 +89,17 @@ const graphdata = {
 db.all(queryNodes, (_, nodes) => 
   db.all(queryLinks, (_, links) => 
     db.all(queryTags, (_, tags) => {
-      graphdata.data.nodes = nodes.map(node => ({
-        ...node,
-        tags: node.tags ?? [null],
-        file: getFilename(node.file),
-        properties: parseProperties(node.properties),
-      }));
+      graphdata.data.nodes = nodes.map(node => {
+        const splitTags = node.tags?.split(',') ?? [null];
+        return{
+          ...node,
+          tags: splitTags,
+          file: getFilename(node.file),
+          properties: parseProperties(node.properties),
+        };
+      });
       graphdata.data.links = links;
-      graphdata.data.tags = tags.length ? tags : null;
+      graphdata.data.tags = tags.length ? tags.map(t => t.tag) : null;
 
       fs.writeFile('graphdata.json', JSON.stringify(removeQuotesFromObject(graphdata)), (err) => {
         if (err) throw err;
