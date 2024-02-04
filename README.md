@@ -59,3 +59,19 @@ You can create an `img` directory directly under the repository and display imag
 ```org
 [[./img/test.png]]
 ```
+
+### Setting site tile
+
+You can change the title of the site by specifying `site-tile`. (The default is ORUI)
+
+```yml
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate org-roam-ui page
+        uses: ikoamu/org-roam-ui-hosting@main
+        with:
+          org-roam-db-filename: <org-roam-filename>.db
+          site-title: my org-roam!
+```
