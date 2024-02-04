@@ -52,6 +52,10 @@ runs:
       working-directory: action
       run: ./create_notes.sh ../orgs
       shell: bash
+    - name: Copy org/img to ui/public/img
+      working-directory: action
+      run: cp -r ../orgs/img ../ui/public/img
+      shell: bash
 
     # build org-roam-ui
     - name: Install org-roam-ui dependencies
