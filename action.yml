@@ -9,6 +9,10 @@ inputs:
   org-roam-db-filename:
     description: "org-roam db filename"
     required: true
+  site-title:
+    description: "Site title"
+    required: false
+    default: "ORUI"
   deploy-to-pages:
     description: "Deploy to GitHub Pages"
     required: false
@@ -64,6 +68,10 @@ runs:
     - name: Install org-roam-ui dependencies
       working-directory: ui
       run: yarn install
+      shell: bash
+    - name: Setting .env
+      working-directory: ui
+      run: echo "NEXT_PUBLIC_TITLE=${{ inputs.site-title }}" > .env
       shell: bash
     - name: Build org-roam-ui
       working-directory: ui/standalone
