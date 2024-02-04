@@ -51,3 +51,11 @@ jobs:
           org-roam-db-filename: <org-roam-filename>.db
           deploy-to-pages: true
 ```
+
+### Show Image
+
+You can create an `img` directory directly under the repository and display image files stored there.
+
+```org
+[[./img/test.png]]
+```
