@@ -52,9 +52,12 @@ runs:
       working-directory: action
       run: ./create_notes.sh ../orgs
       shell: bash
-    - name: Copy org/img to ui/public/img
+    - name: Copy org/img to ui/public/
       working-directory: action
-      run: cp -r ../orgs/img ../ui/public/img
+      run: |
+        if [ -d "../orgs/img" ]; then
+          cp -r ../orgs/img ../ui/public
+        fi
       shell: bash
 
     # build org-roam-ui
