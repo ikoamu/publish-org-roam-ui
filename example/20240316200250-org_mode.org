@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       96FF21FB-FE8A-4BFF-B5D6-016CB391E24D
+:ROAM_REFS: https://orgmode.org/
+:END:
+#+title: org-mode
+
+[[./img/org-mode-unicorn.svg]]
+
+A GNU [[id:66ECE52E-2723-41B3-A4AB-6CEC507C1349][Emacs]] major mode for keeping notes, authoring documents,
+computational notebooks, literate programming, maintaining to-do
+lists, planning projects, and more — in a fast and effective plain
+text system.
+
+

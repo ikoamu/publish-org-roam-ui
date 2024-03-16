@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       66ECE52E-2723-41B3-A4AB-6CEC507C1349
+:END:
+#+title: Emacs
+#+filetags: :emacs:
+
+[[./img/emacs-logo.png]]
+
+awesome text editor.

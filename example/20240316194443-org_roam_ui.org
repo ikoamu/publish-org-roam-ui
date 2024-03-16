@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       96C6CA60-33B3-4214-BCB8-9AC96A498852
+:END:
+#+title: org-roam-ui
+#+filetags: :org-roam:
+
+- Org-Roam-UI is a frontend for exploring and interacting with your [[id:2F076032-6C7E-45BB-8595-C4CE6CA3DD7B][org-roam]] notes.
+- Org-Roam-UI is meant a successor of org-roam-server that extends functionality of org-roam with a Web app that runs side-by-side with [[id:66ECE52E-2723-41B3-A4AB-6CEC507C1349][Emacs]].
+
+  

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       DD0EF7D6-E39E-4553-8FA4-945561F40238
+:END:
+#+title: roam
+#+filetags: :zettelkasten:
+
+https://roamresearch.com/
+
+A note-taking tool for networked thought.

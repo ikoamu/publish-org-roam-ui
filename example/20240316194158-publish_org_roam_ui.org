@@ -1,0 +1,84 @@
+:PROPERTIES:
+:ID:       2FED95CA-A7BA-4960-8B9B-945E8BE21BF8
+:END:
+#+title: publish-org-roam-ui
+#+filetags: :github-actions:org-roam:emacs:
+
+https://github.com/marketplace/actions/publish-org-roam-ui
+
+* publish-org-roam-ui
+
+This action generates a static site for [[id:96C6CA60-33B3-4214-BCB8-9AC96A498852][org-roam-ui]] from [[id:2F076032-6C7E-45BB-8595-C4CE6CA3DD7B][org-roam]] files managed on GitHub.
+
+It also allows deployment to GitHub Pages.
+
+** How to Use
+First, please manage the .org files in ~org-roam-directory~ and the db file in org-roam using git.
+
+#+begin_src elisp
+(setq org-roam-directory "/path/to/org-roam-dir")
+(setq org-roam-db-location "/path/to/org-roam-dir/<org-roam-filename>.db")
+#+end_src
+
+#+begin_src bash
+cd /path/to/org-roam-dir/
+git init
+#+end_src
+
+Then, a static org-roam-ui site is easily generated for the artifact by creating a workflow like the following.
+
+#+begin_src yaml
+name: Generate static org-roam-ui page
+on:
+  push:
+    branches:
+      - main
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate org-roam-ui page
+        uses: ikoamu/org-roam-ui-hosting@main
+        with:
+          org-roam-db-filename: <org-roam-filename>.db
+#+end_src
+
+[[./img/workflow_result.png]]
+
+Deploy to GitHub Pages by setting ~deploy-to-pages~ to true.
+
+#+begin_src yaml
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate org-roam-ui page
+        uses: ikoamu/org-roam-ui-hosting@main
+        with:
+          org-roam-db-filename: <org-roam-filename>.db
+          deploy-to-pages: true
+#+end_src
+
+*** Show Image
+
+You can create an ~img~ directory directly under the repository and display image files stored there.
+
+#+begin_src org
+[[./img/test.png]]
+#+end_src
+
+*** Setting site tile
+
+You can change the title of the site by specifying ~site-tile~. (The default is ORUI)
+
+#+begin_src yaml
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate org-roam-ui page
+        uses: ikoamu/org-roam-ui-hosting@main
+        with:
+          org-roam-db-filename: <org-roam-filename>.db
+          site-title: my org-roam!
+#+end_src

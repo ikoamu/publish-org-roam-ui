@@ -1,0 +1,24 @@
+name: Generate static org-roam-ui page
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: copy example files
+        run: cp example/* ./
+      - name: Deploy to GitHub Pages
+        uses: ikoamu/org-roam-ui-hosting@main
+        with:
+          org-roam-db-filename: org-roam.db
+          site-title: publish-org-roam-ui
+          deploy-to-pages: true

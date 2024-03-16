@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       2F076032-6C7E-45BB-8595-C4CE6CA3DD7B
+:END:
+#+title: org-roam
+#+filetags: :org-mode:org-roam:emacs:
+
+Org-roam is a plain-text knowledge management system.
+It brings some of [[id:DD0EF7D6-E39E-4553-8FA4-945561F40238][roam]] more powerful features into the [[id:96FF21FB-FE8A-4BFF-B5D6-016CB391E24D][org-mode]] ecosystem.
