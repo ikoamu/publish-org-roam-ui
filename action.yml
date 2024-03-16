@@ -9,6 +9,10 @@ inputs:
   org-roam-db-filename:
     description: "org-roam db filename"
     required: true
+  org-roam-directory:
+    description: "org-roam directory"
+    required: false
+    default: "."
   site-title:
     description: "Site title"
     required: false
@@ -50,17 +54,17 @@ runs:
       shell: bash
     - name: Generate graphdata.json
       working-directory: action
-      run: npm run generate --script_params='../orgs/${{ inputs.org-roam-db-filename }}'
+      run: npm run generate --script_params='../orgs/${{ inputs.org-roam-directory }}/${{ inputs.org-roam-db-filename }}'
       shell: bash
     - name: Create Notes
       working-directory: action
-      run: ./create_notes.sh ../orgs
+      run: ./create_notes.sh ../orgs/${{ inputs.org-roam-directory }}
       shell: bash
     - name: Copy org/img to ui/public/
       working-directory: action
       run: |
-        if [ -d "../orgs/img" ]; then
-          cp -r ../orgs/img ../ui/public
+        if [ -d "../orgs/${{ inputs.org-roam-directory }}/img" ]; then
+          cp -r ../orgs/${{ inputs.org-roam-directory }}/img ../ui/public
         fi
       shell: bash
 

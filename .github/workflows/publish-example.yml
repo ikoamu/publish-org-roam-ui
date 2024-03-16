@@ -19,6 +19,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: ikoamu/org-roam-ui-hosting@main
         with:
+          org-roam-directory: example
           org-roam-db-filename: org-roam.db
           site-title: publish-org-roam-ui
           deploy-to-pages: true
