@@ -14,8 +14,6 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - name: copy example files
-        run: cp example/* ./
       - name: Deploy to GitHub Pages
         uses: ikoamu/org-roam-ui-hosting@main
         with:
