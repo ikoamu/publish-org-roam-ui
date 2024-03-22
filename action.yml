@@ -39,7 +39,7 @@ runs:
       uses: actions/checkout@v4
       with:
         repository: ikoamu/org-roam-ui
-        ref: feature/add-export-functionality
+        ref: publish-org-roam-ui
         path: ui
 
     - name: Setup Node
