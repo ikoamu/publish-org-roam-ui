@@ -91,8 +91,10 @@ db.all(queryNodes, (_, nodes) =>
     db.all(queryTags, (_, tags) => {
       graphdata.data.nodes = nodes.map(node => {
         const splitTags = node.tags?.split(',') ?? [null];
+        const olp = node.olp?.replace(/\(\"|\"\)/g, '').split(' ') ?? null;
         return{
           ...node,
+          olp,
           tags: splitTags,
           file: getFilename(node.file),
           properties: parseProperties(node.properties),
