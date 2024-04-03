@@ -40,8 +40,14 @@ jobs:
 <img width="669" alt="generated artifact" src="https://github.com/ikoamu/publish-org-roam-ui/assets/38206334/fdc9f133-c97c-4d3b-b328-3a1d86560e83">
 
 Deploy to GitHub Pages by setting `deploy-to-pages` to true.
+And sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages.
 
 ```yml
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   main:
     runs-on: ubuntu-latest
