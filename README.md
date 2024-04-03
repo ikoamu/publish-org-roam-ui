@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate org-roam-ui page
-        uses: ikoamu/org-roam-ui-hosting@main
+        uses: ikoamu/publish-org-roam-ui@main
         with:
           org-roam-db-filename: <org-roam-filename>.db
           deploy-to-pages: true
@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate org-roam-ui page
-        uses: ikoamu/org-roam-ui-hosting@main
+        uses: ikoamu/publish-org-roam-ui@main
         with:
           org-roam-db-filename: <org-roam-filename>.db
           site-title: my org-roam!
