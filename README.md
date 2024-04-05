@@ -42,6 +42,8 @@ jobs:
 Deploy to GitHub Pages by setting `deploy-to-pages` to true.
 And sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages.
 
+Under the repositories _Settings > GitHub Pages_ select _Deply from Action_.
+
 ```yml
 permissions:
   contents: read
