@@ -4,12 +4,17 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "generate": "node ./generate_json.js $npm_config_script_params"
+    "generate": "node ./generate_json.js $npm_config_script_params",
+    "generate:search": "node ./generate_searchdata.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sqlite3": "^5.1.7"
+    "orgast-util-to-string": "^1.0.1",
+    "sqlite3": "^5.1.7",
+    "unified": "^11.0.4",
+    "uniorg": "^1.1.1",
+    "uniorg-parse": "^2.1.1"
   }
 }

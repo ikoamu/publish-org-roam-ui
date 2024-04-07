@@ -58,7 +58,15 @@ runs:
       shell: bash
     - name: Create Notes
       working-directory: action
-      run: ./create_notes.sh ../orgs/${{ inputs.org-roam-directory }}
+      run: ./create_notes.sh ../orgs/${{ inputs .org-roam-directory }}
+      shell: bash
+    - name: Create Search data
+      working-directory: action
+      run: npm run generate:search
+      shell: bash
+    - name: Copy seachdata.json to ../ui/components/Search
+      working-directory: action
+      run: cp --force	searchdata.json ../ui/components/Search/
       shell: bash
     - name: Copy org/img to ui/public/
       working-directory: action
