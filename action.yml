@@ -21,6 +21,9 @@ inputs:
     description: "Deploy to GitHub Pages"
     required: false
     default: false
+  ui-ref:
+    required: false
+    default: "publish-org-roam-ui"
 
 runs:
   using: "composite"
@@ -28,7 +31,7 @@ runs:
     - name: Checkout this repo
       uses: actions/checkout@v4
       with:
-        repository: ikoamu/org-roam-ui-hosting
+        repository: ikoamu/publish-org-roam-ui
         path: action
     - name: Checkout org file repo
       uses: actions/checkout@v4
@@ -39,7 +42,7 @@ runs:
       uses: actions/checkout@v4
       with:
         repository: ikoamu/org-roam-ui
-        ref: publish-org-roam-ui
+        ref: ${{ inputs.ui-ref }}
         path: ui
 
     - name: Setup Node
