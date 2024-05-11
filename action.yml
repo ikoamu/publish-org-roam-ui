@@ -20,8 +20,9 @@ inputs:
   deploy-to-pages:
     description: "Deploy to GitHub Pages"
     required: false
-    default: false
+    default: "false"
   ui-ref:
+    description: "Specify org-roam-ui branch"
     required: false
     default: "publish-org-roam-ui"
 
