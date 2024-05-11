@@ -94,7 +94,7 @@ YourRepository
 │   │   └── img2.png
 │   ├── org-roam.db
 │   ├── roam1.org
-│   ├── roam1.org
+│   ├── roam2.org
 │   └── ・・・
 ├── README.org
 └── ・・・
