@@ -1,4 +1,5 @@
 console.log("db file", process.argv[2]);
+
 const sqlite3 = require('sqlite3').verbose();
 const dbFile = process.argv[2];
 const db = new sqlite3.Database(dbFile);

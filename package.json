@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "generate": "node ./generate_json.js $npm_config_script_params",
+    "generate:graphdata": "node ./generate_graphdata.js $npm_config_script_params",
     "generate:search": "node ./generate_searchdata.mjs"
   },
   "keywords": [],

@@ -58,7 +58,7 @@ runs:
       shell: bash
     - name: Generate graphdata.json
       working-directory: action
-      run: npm run generate --script_params='../orgs/${{ inputs.org-roam-directory }}/${{ inputs.org-roam-db-filename }}'
+      run: npm run generate:graphdata --script_params='../orgs/${{ inputs.org-roam-directory }}/${{ inputs.org-roam-db-filename }}'
       shell: bash
     - name: Create Notes
       working-directory: action
