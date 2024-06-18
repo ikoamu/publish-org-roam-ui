@@ -26,6 +26,9 @@ pushd org-roam-ui
 yarn install
 pushd standalone
 ./build-standalone-server.sh ../..
+if [ -d "../../out" ]; then
+    rm -rf ../../out
+fi
 mv out ../../
 popd
 popd
