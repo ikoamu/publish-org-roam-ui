@@ -65,14 +65,26 @@ GROUP BY
   nodes.id
 `;
 
-const queryLinks = `
+const queryIdLinks = `
 SELECT
-  type, dest as target, source
+  type,
+  dest as target,
+  source
 FROM
   links
 WHERE
   type = '"id"'
 `;
+
+const queryCites = `
+SELECT
+  citations.node_id as citeNodeId,
+  citations.cite_key as citeKey,
+  refs.node_id as refNodeId
+FROM
+  citations
+LEFT JOIN refs ON citations.cite_key = refs.ref
+`
 
 const queryTags = `
 SELECT
@@ -88,27 +100,40 @@ const graphdata = {
   data: {},
 };
 db.all(queryNodes, (_, nodes) => 
-  db.all(queryLinks, (_, links) => 
-    db.all(queryTags, (_, tags) => {
-      graphdata.data.nodes = nodes.map(node => {
-        const splitTags = node.tags?.split(',') ?? [null];
-        const olp = node.olp?.replace(/\(\"|\"\)/g, '').split(' ') ?? null;
-        return{
-          ...node,
-          olp,
-          tags: splitTags,
-          file: getFilename(node.file),
-          properties: parseProperties(node.properties),
-        };
-      });
-      graphdata.data.links = links;
-      graphdata.data.tags = tags.length ? tags.map(t => t.tag) : null;
-
-      fs.writeFile('graphdata.json', JSON.stringify(removeQuotesFromObject(graphdata)), (err) => {
-        if (err) throw err;
-        console.log('The file has been saved!');
-      });
-    }),
+  db.all(queryIdLinks, (_, links) => 
+    db.all(queryCites, (_, cites) =>
+      db.all(queryTags, (_, tags) => {
+        graphdata.data.nodes = nodes.map(node => {
+          const splitTags = node.tags?.split(',') ?? [null];
+          const olp = node.olp?.replace(/\(\"|\"\)/g, '').split(' ') ?? null;
+          return{
+            ...node,
+            olp,
+            tags: splitTags,
+            file: getFilename(node.file),
+            properties: parseProperties(node.properties),
+          };
+        });
+        graphdata.data.links = [
+          ...links,
+          ...cites.map(cite => cite.refNodeId ? ({
+              type: 'ref',
+              source: cite.citeNodeId,
+              target: cite.refNodeId,
+            }) : ({
+              type: 'cite',
+              source: cite.citeNodeId,
+              target: cite.citeKey,
+            })),
+        ];
+        graphdata.data.tags = tags.length ? tags.map(t => t.tag) : null;
+        
+        fs.writeFile('graphdata.json', JSON.stringify(removeQuotesFromObject(graphdata)), (err) => {
+          if (err) throw err;
+          console.log('The file has been saved!');
+        });
+      }),
+    )
   ),
 );
 
