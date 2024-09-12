@@ -1,7 +1,8 @@
 #!/bin/bash
 
-read -p "Enter the ROAM_PATH: " ROAM_PATH
-read -p "Enter the ROAM_DB_FILE: " ROAM_DB_FILE
+# export ROAM_PATH=/path/to/org-roam/src
+# export ROAM_DB_FILE=org-roam.db
+
 ROAM_DB_PATH=$ROAM_PATH/$ROAM_DB_FILE
 ROAM_IMG_PATH=$ROAM_PATH/img
 
