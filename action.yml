@@ -72,6 +72,14 @@ runs:
       working-directory: action
       run: cp --force	searchdata.json ../ui/components/Search/
       shell: bash
+    - name: Create Search index
+      working-directory: action
+      run: node build-index.js
+      shell: bash
+    - name: Copy fuse-index.json to ../ui/components/Search
+      working-directory: action
+      run: cp --force	fuse-index.json ../ui/components/Search/
+      shell: bash
     - name: Copy org/img to ui/public/
       working-directory: action
       run: |

@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# export ROAM_PATH=/path/to/org-roam/src
-# export ROAM_DB_FILE=org-roam.db
-
+read -p "Enter the ROAM_PATH: " ROAM_PATH
+read -p "Enter the ROAM_DB_FILE: " ROAM_DB_FILE
 ROAM_DB_PATH=$ROAM_PATH/$ROAM_DB_FILE
 ROAM_IMG_PATH=$ROAM_PATH/img
 
@@ -16,9 +15,13 @@ npm install
 npm run generate:graphdata --script_params=$ROAM_DB_PATH
 ./create_notes.sh $ROAM_PATH
 npm run generate:search
+npm install fuse.js
+node build-index.js
 
 # Copy files to the org-roam-ui directory
 cp -f searchdata.json org-roam-ui/components/Search/
+cp -f fuse-index.json org-roam-ui/components/Search/
+
 if [ -d $ROAM_IMG_PATH ]; then
     cp -r $ROAM_IMG_PATH org-roam-ui/public
 fi
