@@ -5,3 +5,6 @@ searchdata.json
 notes/
 org-roam-ui/
 out/
+
+# Fuse.js index
+fuse-index.json

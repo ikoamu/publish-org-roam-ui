@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fuse.js": "^7.0.0",
     "orgast-util-to-string": "^1.0.1",
     "sqlite3": "^5.1.7",
     "unified": "^11.0.4",
