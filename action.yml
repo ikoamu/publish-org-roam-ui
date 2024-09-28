@@ -21,6 +21,10 @@ inputs:
     description: "Deploy to GitHub Pages"
     required: false
     default: "false"
+  default-section-open:
+    description: "Default section open"
+    required: false
+    default: "true"
   ui-ref:
     description: "Specify org-roam-ui branch"
     required: false
@@ -95,7 +99,7 @@ runs:
       shell: bash
     - name: Setting .env
       working-directory: ui
-      run: echo "NEXT_PUBLIC_TITLE=${{ inputs.site-title }}" > .env
+      run: echo "NEXT_PUBLIC_TITLE=${{ inputs.site-title }}\nNEXT_PUBLIC_DEFAULT_SECTION_OPEN=${{ inputs.default-section-open }}" > .env
       shell: bash
     - name: Build org-roam-ui
       working-directory: ui/standalone
