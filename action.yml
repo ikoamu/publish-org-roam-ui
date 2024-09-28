@@ -97,10 +97,14 @@ runs:
       working-directory: ui
       run: yarn install
       shell: bash
-    - name: Setting .env
+    - name: Set NEXT_PUBLIC_TITLE to .env
       working-directory: ui
-      run: echo "NEXT_PUBLIC_TITLE=${{ inputs.site-title }}\nNEXT_PUBLIC_DEFAULT_SECTION_OPEN=${{ inputs.default-section-open }}" > .env
       shell: bash
+      run: echo "NEXT_PUBLIC_TITLE=${{ inputs.site-title }}" > .env
+    - name: Set NEXT_PUBLIC_DEFAULT_SECTION_OPEN to .env
+      working-directory: ui
+      shell: bash
+      run: echo "NEXT_PUBLIC_DEFAULT_SECTION_OPEN=${{ inputs.default-section-open }}" >> .env
     - name: Build org-roam-ui
       working-directory: ui/standalone
       run: ./build-standalone-server.sh ../../action/
