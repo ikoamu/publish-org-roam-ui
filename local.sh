@@ -10,6 +10,13 @@ if [ ! -d "org-roam-ui" ]; then
     git clone -b publish-org-roam-ui https://github.com/ikoamu/org-roam-ui
 fi
 
+# create .env file
+pushd org-roam-ui
+if [ ! -f ".env" ]; then
+    echo "NEXT_PUBLIC_DEFAULT_SECTION_OPEN=true" > .env
+fi
+popd
+
 # Generate data for org-roam-ui
 npm install
 npm run generate:graphdata --script_params=$ROAM_DB_PATH
